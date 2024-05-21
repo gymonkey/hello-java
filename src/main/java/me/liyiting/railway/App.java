@@ -4,6 +4,9 @@ import org.eclipse.jetty.server.*;
 import org.eclipse.jetty.server.handler.AbstractHandler;
 import org.eclipse.jetty.util.Callback;
 
+import java.nio.ByteBuffer;
+import java.nio.charset.StandardCharsets;
+
 /**
  * Hello world!
  *
@@ -21,6 +24,8 @@ public class App
         server.setHandler(new AbstractHandler() {
             @Override
             public boolean handle(Request request, Response response, Callback callback) throws Exception {
+                response.setStatus(200);
+                response.write(true, ByteBuffer.wrap("hello world".getBytes(StandardCharsets.UTF_8)),callback);
                 return false;
             }
         });
