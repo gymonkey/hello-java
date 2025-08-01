@@ -13,7 +13,7 @@ COPY src ./src
 RUN mvn clean package -DskipTests
 
 # 多阶段构建：第二阶段 - 使用Java运行应用
-FROM m.daocloud.io/docker.io/library/openjdk:17-jre-slim
+FROM m.daocloud.io/docker.io/library/openjdk:17-slim-bullseye
 
 # 设置工作目录
 WORKDIR /app
