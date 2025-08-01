@@ -1,5 +1,5 @@
 # 多阶段构建：第一阶段 - 使用Maven编译项目
-FROM maven:3.8.4-openjdk-17 AS builder
+FROM m.daocloud.io/docker.io/library/maven:3.8.4-openjdk-17 AS builder
 
 # 设置工作目录
 WORKDIR /app
@@ -13,7 +13,7 @@ COPY src ./src
 RUN mvn clean package -DskipTests
 
 # 多阶段构建：第二阶段 - 使用Java运行应用
-FROM openjdk:17-jre-slim
+FROM m.daocloud.io/docker.io/library/openjdk:17-jre-slim
 
 # 设置工作目录
 WORKDIR /app
